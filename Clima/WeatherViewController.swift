@@ -24,7 +24,7 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate {
     //TODO: Declare instance variables here
     //step 2
     let locationManger = CLLocationManager()
-
+    let weatherDataModel = WeatherDataModel()
     
     //Pre-linked IBOutlets
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -58,8 +58,13 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
             response in
             if response.result.isSuccess {
-                
                 print("Success! Got the weather data")
+                
+                //step 7
+                let weatherJSON : JSON = JSON(response.result.value!)
+                //step 8
+                self.updateWeatherData(json: weatherJSON)
+                
                 
             } else {
                 print("Error \(response.result.error.debugDescription)")
@@ -78,8 +83,20 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate {
    
     
     //Write the updateWeatherData method here:
-    
-
+    //step 8
+    func updateWeatherData(json : JSON){
+        
+        if let tempResult = json["main"]["temp"].double {
+            
+        //step 11
+        weatherDataModel.temperature = Int(tempResult - 273.15)
+        weatherDataModel.city = json["name"].stringValue
+        weatherDataModel.condition = json["weather"][0]["id"].intValue
+        weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+        } else {
+            cityLabel.text = "Weather Unavailable"
+        }
+    }
     
     
     
@@ -104,6 +121,8 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
             locationManger.stopUpdatingLocation()
+            //to stop getting multiple lon and lat
+            locationManger.delegate = nil
             
             print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
             
