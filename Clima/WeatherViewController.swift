@@ -37,6 +37,8 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
     
     @IBOutlet weak var `switch`: UISwitch!
     
+    var iconBool : Bool?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,9 +106,21 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
             weatherDataModel.temperatureInF = Int(tempResult)
             weatherDataModel.city = json["name"].stringValue
             weatherDataModel.condition = json["weather"][0]["id"].intValue
+            weatherDataModel.conditionNight = json["weather"][0]["id"].intValue
+
+            let weatherIconN = json["weather"][0]["icon"].stringValue
+            print(weatherIconN)
+            
             weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
             
-          
+            weatherDataModel.weatherIconNameNight = weatherDataModel.updateWeatherIconNight(conditionNight: weatherDataModel.conditionNight)
+           
+            if (weatherIconN ==  "01d") || (weatherIconN == "02d") || (weatherIconN == "03d") || (weatherIconN == "04d") || (weatherIconN == "09d") || (weatherIconN == "010d") || (weatherIconN == "011d") || (weatherIconN == "013d") || (weatherIconN == "50d") {
+                iconBool = true
+            } else {
+
+                iconBool = false
+            }
             //step 12
            updateUIWithWeatherData()
             
@@ -132,10 +146,19 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
         if `switch`.isOn == true {
             temperatureLabel.text = "\(weatherDataModel.temperature)°"
         } else {
-            temperatureLabel.text = "\(weatherDataModel.temperatureInF)"
+            temperatureLabel.text = "\(weatherDataModel.temperatureInF)°"
         }
+        
+        
+        if iconBool == true {
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
-        conditionImage.image = UIImage(named: weatherDataModel.conditionPic)
+        }
+        else {
+        weatherIcon.image = UIImage(named: weatherDataModel.weatherIconNameNight)
+        }
+        
+        
+        //conditionImage.image = UIImage(named: weatherDataModel.conditionPic)
         
     }
     
@@ -215,7 +238,7 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
             updateUIWithWeatherData()
 
         } else {
-            degreeLabel .text = "F"
+            degreeLabel .text = "F°"
             updateUIWithWeatherData()
         }
         
