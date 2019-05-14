@@ -33,6 +33,11 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet var conditionImage : UIImageView!
     
+    @IBOutlet weak var degreeLabel: UILabel!
+    
+    @IBOutlet weak var `switch`: UISwitch!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +50,7 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
         //Step 4
         locationManger.startUpdatingLocation()
         
+
     }
     
     
@@ -79,6 +85,8 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
     
     
     
+
+    
     
     //MARK: - JSON Parsing
     /***************************************************************/
@@ -91,7 +99,9 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
         if let tempResult = json["main"]["temp"].double {
             
         //step 11
+            
             weatherDataModel.temperature = Int(tempResult - 273.15)
+            weatherDataModel.temperatureInF = Int(tempResult)
             weatherDataModel.city = json["name"].stringValue
             weatherDataModel.condition = json["weather"][0]["id"].intValue
             weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
@@ -118,7 +128,12 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
     func updateUIWithWeatherData() {
         
         cityLabel.text = weatherDataModel.city
-        temperatureLabel.text = "\(weatherDataModel.temperature)°"
+        
+        if `switch`.isOn == true {
+            temperatureLabel.text = "\(weatherDataModel.temperature)°"
+        } else {
+            temperatureLabel.text = "\(weatherDataModel.temperatureInF)"
+        }
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
         conditionImage.image = UIImage(named: weatherDataModel.conditionPic)
         
@@ -191,6 +206,20 @@ class WeatherViewController: UIViewController,CLLocationManagerDelegate, changeC
         }
     }
     
+    
+    @IBAction func switchCilcked(_ sender: UISwitch) {
+        
+        if (sender.isOn == true) {
+            
+            degreeLabel.text = "C°"
+            updateUIWithWeatherData()
+
+        } else {
+            degreeLabel .text = "F"
+            updateUIWithWeatherData()
+        }
+        
+    }
     
     
     

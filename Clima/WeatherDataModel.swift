@@ -13,6 +13,8 @@ class WeatherDataModel {
     //Declare your model variables here
     //step 9
     var temperature : Int = 0
+    var temperatureInF : Int = 0
+
     var condition : Int = 0
     var city : String = ""
     var conditionPic : String = ""
