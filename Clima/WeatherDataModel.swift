@@ -20,7 +20,13 @@ class WeatherDataModel {
     //var conditionPic : String = ""
     var weatherIconName : String = ""
     var weatherIconNameNight : String = ""
-
+    var descriptionWeather : String = ""
+    var todayTempMin : Int = 0
+    var todayTempMax : Int = 0
+    var todayTempMinF : Int = 0
+    var todayTempMaxF : Int = 0
+    var todayName : String = ""
+    
     //This method turns a condition code into the name of the weather condition image
     
     func updateWeatherIcon(condition: Int) -> String {

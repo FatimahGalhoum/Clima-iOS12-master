@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		593391CFB06C65880C1DBDAC /* Pods_Clima.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C684341B2E29E71070FAE31 /* Pods_Clima.framework */; };
+		5FA66B1B228B7F7B00CAD997 /* ForcastCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66B1A228B7F7B00CAD997 /* ForcastCellTableViewCell.swift */; };
+		5FA66B1D228B8D3800CAD997 /* ForcastWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66B1C228B8D3800CAD997 /* ForcastWeather.swift */; };
+		5FA66B1F228B9B7000CAD997 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA66B1E228B9B7000CAD997 /* Extensions.swift */; };
 		63E28AD11B99C32400FBF6E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */; };
 		63E28AF11B99C35700FBF6E0 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AF01B99C35700FBF6E0 /* WeatherDataModel.swift */; };
 		63E28AF61B99C36100FBF6E0 /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AF21B99C36100FBF6E0 /* ChangeCityViewController.swift */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		0C684341B2E29E71070FAE31 /* Pods_Clima.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clima.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD4022DAD27883E1A7283EE /* Pods-Clima.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.release.xcconfig"; path = "Target Support Files/Pods-Clima/Pods-Clima.release.xcconfig"; sourceTree = "<group>"; };
+		5FA66B1A228B7F7B00CAD997 /* ForcastCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForcastCellTableViewCell.swift; sourceTree = "<group>"; };
+		5FA66B1C228B8D3800CAD997 /* ForcastWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForcastWeather.swift; sourceTree = "<group>"; };
+		5FA66B1E228B9B7000CAD997 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63E28ACB1B99C32400FBF6E0 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E28ACF1B99C32400FBF6E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 		63E28ACD1B99C32400FBF6E0 /* Clima */ = {
 			isa = PBXGroup;
 			children = (
+				5FA66B1E228B9B7000CAD997 /* Extensions.swift */,
 				63E28AFD1B99C38100FBF6E0 /* View */,
 				63E28AFA1B99C36D00FBF6E0 /* Model */,
 				63E28AFB1B99C37500FBF6E0 /* Controller */,
@@ -99,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				63E28AF01B99C35700FBF6E0 /* WeatherDataModel.swift */,
+				5FA66B1C228B8D3800CAD997 /* ForcastWeather.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 				63E28AF21B99C36100FBF6E0 /* ChangeCityViewController.swift */,
 				63E28AF51B99C36100FBF6E0 /* WeatherViewController.swift */,
 				63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */,
+				5FA66B1A228B7F7B00CAD997 /* ForcastCellTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -259,7 +268,10 @@
 				63E28AF11B99C35700FBF6E0 /* WeatherDataModel.swift in Sources */,
 				63E28AF91B99C36100FBF6E0 /* WeatherViewController.swift in Sources */,
 				63E28AD11B99C32400FBF6E0 /* AppDelegate.swift in Sources */,
+				5FA66B1D228B8D3800CAD997 /* ForcastWeather.swift in Sources */,
 				63E28AF61B99C36100FBF6E0 /* ChangeCityViewController.swift in Sources */,
+				5FA66B1B228B7F7B00CAD997 /* ForcastCellTableViewCell.swift in Sources */,
+				5FA66B1F228B9B7000CAD997 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
